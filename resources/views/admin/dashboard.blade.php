@@ -40,10 +40,10 @@
                 <i class="fa fa-shopping-cart"></i>
             </div>
             <div class="value">
-                <h1 class=" count3">
-                    0
+                <h1 class=" counct3">
+                    {{ $product }}
                 </h1>
-                <p>New Order</p>
+                <p>Total Product</p>
             </div>
         </section>
     </div>

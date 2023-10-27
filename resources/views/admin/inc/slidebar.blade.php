@@ -31,11 +31,11 @@
         <li class="sub-menu">
             <a href="javascript:;" >
                 <i class="fa fa-shopping-cart"></i>
-                <span>Category</span>
+                <span>Product</span>
             </a>
             <ul class="sub">
-                <li><a  href="{{ url('/category') }}">Add Product</a></li>
-                <li><a  href="{{ url('/allCategory') }}">All Product</a></li>
+                <li><a  href="{{ url('dashboard/product') }}">Add Product</a></li>
+                <li><a  href="{{ url('/All-product') }}">All Product</a></li>
             </ul>
         </li>
 

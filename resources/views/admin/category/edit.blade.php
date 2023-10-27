@@ -11,7 +11,7 @@ Add-Category
     <div class="col-lg-6 offset-3">
         <section class="card">
             <header class="card-header">
-                Add Category
+                Edit Category
             </header>
             <div class="card-body">
                 <form method="POST" action="{{ url('/category-update',$category->id)}}">

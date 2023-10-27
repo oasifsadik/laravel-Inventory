@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EmpployeeController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Fontend\FontendController;
 
@@ -22,7 +23,7 @@ Auth::routes();
 Route::get('/',[LoginController::class,'showLoginForm'] );
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/user_dashboard', [FontendController::class, 'index'])->name('home');
+    Route::get('/user_dashboard', [FontendController::class, 'index']);
 
 });
 Route::middleware(['auth','isAdmin'])->group(function(){
@@ -41,5 +42,8 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('/category-delete/{id}',[CategoryController::class,'delete']);
 
     //product
+    Route::get('dashboard/product',[ProductController::class,'index']);
+    Route::post('dashboard/product-save',[ProductController::class,'store']);
+    Route::get('All-product',[ProductController::class,'show']);
 
 });
