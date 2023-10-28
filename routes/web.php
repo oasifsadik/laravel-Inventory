@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EmpployeeController;
 use App\Http\Controllers\Admin\ProductController;
@@ -33,6 +34,13 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('dashboard/allemployees',[EmpployeeController::class,'show']);
     Route::get('dashboard/delete/{id}',[EmpployeeController::class,'delete']);
 
+    //Branch
+    Route::get('/branch',[BranchController::class,'index']);
+    Route::post('/branch-save',[BranchController::class,'store']);
+    Route::get('/all-branch',[BranchController::class,'show']);
+    Route::get('/edit-branch/{id}',[BranchController::class,'edit']);
+    Route::post('/branch-update/{id}',[BranchController::class,'update']);
+    Route::get('/branch-delete/{id}',[BranchController::class,'delete']);
     //Category
     Route::get('/category',[CategoryController::class,'index']);
     Route::post('/add-category',[CategoryController::class,'store']);

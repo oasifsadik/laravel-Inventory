@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Stock;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\Return_;
 
 class ProductController extends Controller
 {
@@ -20,13 +19,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'Category' => 'required|integer', // Change the rules as needed
+            // 'Category' => 'required|integer',
             'name' => 'required|string|max:255',
             'product_description' => 'required|string',
-            'product_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming you want to validate image uploads
+            'product_img' => 'required',
             'buying_date' => 'required|date',
             'buying_price' => 'required|numeric',
-            'status' => 'required', // Assuming status should be one of these values
+            'status' => 'required',
             'qty' => 'required|integer',
         ]);
         $product = Product::create([

@@ -10,6 +10,16 @@
 
         <li class="sub-menu">
             <a href="javascript:;" >
+                <i class="fa fa-code-fork"></i>
+                <span>Branch</span>
+            </a>
+            <ul class="sub">
+                <li><a  href="{{ url('branch') }}">Add Branch</a></li>
+                <li><a  href="{{ url('/all-branch') }}">All Branch</a></li>
+            </ul>
+        </li>
+        <li class="sub-menu">
+            <a href="javascript:;" >
                 <i class="fa fa-users"></i>
                 <span>Employee</span>
             </a>
