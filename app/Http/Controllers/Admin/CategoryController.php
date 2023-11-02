@@ -18,7 +18,7 @@ class CategoryController extends Controller
         $category->category_name = $request->category_name;
         $category->category_description = $request->category_description;
         $category->save();
-        return redirect('/allCategory');
+        return redirect('/allCategory')->with('success','Category Insert Successfully');
     }
     public function show()
     {
@@ -29,7 +29,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->delete();
-        return redirect()->back();
+        return redirect()->back()->with('error','Category Delete Successfully');
     }
     public function edit($id){
         $category = Category::find($id);
@@ -42,6 +42,6 @@ class CategoryController extends Controller
         $category->category_description = $request->category_description;
         $category->update();
 
-        return redirect('/allCategory');
+        return redirect('/allCategory')->with('success','Category Update Successfully');
     }
 }

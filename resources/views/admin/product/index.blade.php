@@ -29,9 +29,9 @@ Add-Product
                                         </option>
                                     @endforeach
                                 </select>
-                                {{-- @error('Category')
+                                @error('cat_id')
                                 <div class="text-danger">{{ $message }}</div>
-                                @enderror --}}
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6">

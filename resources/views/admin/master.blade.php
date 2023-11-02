@@ -12,6 +12,8 @@
 
     <title>@yield('title')</title>
 
+
+
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('fontend') }}/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('fontend') }}/css/bootstrap-reset.css" rel="stylesheet">
@@ -65,6 +67,9 @@
 
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="{{ asset('fontend') }}/js/jquery.js"></script>
+    <link rel="stylesheet" type="text/css"
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="{{ asset('fontend') }}/js/bootstrap.bundle.min.js"></script>
     <script class="include" type="text/javascript" src="{{ asset('fontend') }}/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="{{ asset('fontend') }}/js/jquery.scrollTo.min.js"></script>
@@ -85,6 +90,47 @@
     <script src="{{ asset('fontend') }}/js/sparkline-chart.js"></script>
     <script src="{{ asset('fontend') }}/js/easy-pie-chart.js"></script>
     <script src="{{ asset('fontend') }}/js/count.js"></script>
+    <script>
+        @if(Session::has('success'))
+                toastr.options =
+                {
+                    "closeButton" : true,
+                    "progressBar" : true,
+                    "positionClass": "toast-top-right",
+                }
+            toastr.success("{{ session('success') }}");
+        @endif
+
+        @if(Session::has('error'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true,
+                "positionClass": "toast-top-right",
+            }
+                toastr.error("{{ session('error') }}");
+        @endif
+
+        @if(Session::has('info'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true,
+                "positionClass": "toast-top-right",
+            }
+                toastr.info("{{ session('info') }}");
+        @endif
+
+        @if(Session::has('warning'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true,
+                "positionClass": "toast-top-right",
+            }
+                toastr.warning("{{ session('warning') }}");
+        @endif
+    </script>
 
   <script>
 

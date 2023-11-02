@@ -43,7 +43,7 @@ All-Product
                             <td>{{ $product->buying_date }}</td>
                             <td>{{ $product->buying_price }}</td>
                             <td>
-                                @foreach ($product->Stock as $stock)
+                                @foreach ($product->stock as $stock)
                                     {{ $stock->qty }}
                                 @endforeach
                             </td>
@@ -58,8 +58,8 @@ All-Product
                                 <img src="{{ asset('product/'. $product->product_img) }}" height="80px" width="70px" alt="">
                             </td>
                             <td>
-                                <a href="" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></a>
-                                <a href="{{ url('dashboard/delete', $product->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                <a href="{{url('product-edit',$product->id)}}" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></a>
+                                <a href="{{ url('product-delete', $product->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
                         @endforeach

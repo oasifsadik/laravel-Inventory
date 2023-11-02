@@ -53,5 +53,9 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('dashboard/product',[ProductController::class,'index']);
     Route::post('dashboard/product-save',[ProductController::class,'store']);
     Route::get('All-product',[ProductController::class,'show']);
+    Route::get('product-edit/{id}',[ProductController::class,'edit']);
+    Route::post('product-update/{id}',[ProductController::class,'update']);
+    Route::get('product-delete/{id}',[ProductController::class,'delete']);
+
 
 });

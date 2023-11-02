@@ -23,7 +23,7 @@ class BranchController extends Controller
         $branch->branch_name = $request->name;
         $branch->branch_address = $request->address;
         $branch->save();
-        return redirect()->back();
+        return redirect()->back()->with('success','Branch Adding Successfully');
 
 
     }
@@ -51,6 +51,6 @@ class BranchController extends Controller
     {
         $branch = Branch::find($id);
         $branch->delete();
-        return redirect()->back();
+        return redirect()->back()->with('error','Branch Delete Successfully');
     }
 }
