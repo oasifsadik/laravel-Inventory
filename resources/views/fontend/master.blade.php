@@ -10,7 +10,9 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="{{ asset('fontend') }}/img/favicon.html">
 
-    <title>@yield('u_title')</title>
+    <title>@yield('title')</title>
+
+
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('fontend') }}/css/bootstrap.min.css" rel="stylesheet">
@@ -33,11 +35,41 @@
   <body class="light-sidebar-nav">
 
   <section id="container">
-      @yield('content')
+    <!--header start-->
+    @include('fontend.inc.navbar')
+    <!--header end-->
+     <!--sidebar start-->
+     <aside>
+        @include('fontend.inc.sidebar')
+   </aside>
+<!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+        <section class="wrapper">
+            <!--state overview start-->
+            @yield('content')
+            <!--state overview end-->
+
+        </section>
+      </section>
+<!--main content end-->
+
+     <!-- Right Slidebar start -->
+     @include('fontend.inc.rightbar')
+     <!-- Right Slidebar end -->
+
+     <!--footer start-->
+     <footer class="site-footer">
+         @include('fontend.inc.footer')
+     </footer>
+     <!--footer end-->
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="{{ asset('fontend') }}/js/jquery.js"></script>
+    <link rel="stylesheet" type="text/css"
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="{{ asset('fontend') }}/js/bootstrap.bundle.min.js"></script>
     <script class="include" type="text/javascript" src="{{ asset('fontend') }}/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="{{ asset('fontend') }}/js/jquery.scrollTo.min.js"></script>
@@ -58,6 +90,47 @@
     <script src="{{ asset('fontend') }}/js/sparkline-chart.js"></script>
     <script src="{{ asset('fontend') }}/js/easy-pie-chart.js"></script>
     <script src="{{ asset('fontend') }}/js/count.js"></script>
+    <script>
+        @if(Session::has('success'))
+                toastr.options =
+                {
+                    "closeButton" : true,
+                    "progressBar" : true,
+                    "positionClass": "toast-top-right",
+                }
+            toastr.success("{{ session('success') }}");
+        @endif
+
+        @if(Session::has('error'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true,
+                "positionClass": "toast-top-right",
+            }
+                toastr.error("{{ session('error') }}");
+        @endif
+
+        @if(Session::has('info'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true,
+                "positionClass": "toast-top-right",
+            }
+                toastr.info("{{ session('info') }}");
+        @endif
+
+        @if(Session::has('warning'))
+            toastr.options =
+            {
+                "closeButton" : true,
+                "progressBar" : true,
+                "positionClass": "toast-top-right",
+            }
+                toastr.warning("{{ session('warning') }}");
+        @endif
+    </script>
 
   <script>
 

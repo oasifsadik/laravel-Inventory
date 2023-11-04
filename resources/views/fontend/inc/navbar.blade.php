@@ -220,13 +220,13 @@
           <!-- user login dropdown start-->
           <li class="dropdown">
               <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                  <img alt="" src="{{ asset('fontend') }}/img/avatar1_small.jpg">
+                  <img alt="" src="{{ asset('employee/'.$user->photo) }}" height="20px">
                   <span class="username">{{ Auth::user()->name }}</span>
                   <b class="caret"></b>
               </a>
               <ul class="dropdown-menu extended logout dropdown-menu-right">
                   <div class="log-arrow-up"></div>
-                  <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                  <li><a href="{{ url('user_profile',Auth::id()) }}"><i class=" fa fa-suitcase"></i>Profile</a></li>
                   <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                   <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
                   <li>

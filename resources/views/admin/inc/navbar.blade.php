@@ -3,7 +3,7 @@
         <i class="fa fa-bars"></i>
     </div>
   <!--logo start-->
-  <a href="index.html" class="logo">Flat<span>lab</span></a>
+  <a href="index.html" class="logo">Ad<span>min</span></a>
   <!--logo end-->
   <div class="nav notify-row" id="top_menu">
       <!--  notification start -->
@@ -226,9 +226,9 @@
               </a>
               <ul class="dropdown-menu extended logout dropdown-menu-right">
                   <div class="log-arrow-up"></div>
-                  <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                  {{-- <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                   <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                  <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
+                  <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li> --}}
                   <li>
                          <a href="{{ route('logout') }}" onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">

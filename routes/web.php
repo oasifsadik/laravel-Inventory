@@ -25,6 +25,8 @@ Route::get('/',[LoginController::class,'showLoginForm'] );
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/user_dashboard', [FontendController::class, 'index']);
+    Route::get('/user_profile/{id}', [FontendController::class, 'profile']);
+    Route::get('/all-pro',[FontendController::class,'product']);
 
 });
 Route::middleware(['auth','isAdmin'])->group(function(){
