@@ -34,36 +34,44 @@
 
   <body class="light-sidebar-nav">
 
-  <section id="container">
-    <!--header start-->
-    @include('fontend.inc.navbar')
-    <!--header end-->
-     <!--sidebar start-->
-     <aside>
-        @include('fontend.inc.sidebar')
-   </aside>
-<!--sidebar end-->
-      <!--main content start-->
-      <section id="main-content">
-        <section class="wrapper">
-            <!--state overview start-->
-            @yield('content')
-            <!--state overview end-->
+    <section id="container">
+        <!--header start-->
+        <header class="header white-bg">
+                @include('fontend.inc.navbar')
+          </header>
+        <!--header end-->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar"  class="nav-collapse ">
+                <!-- sidebar menu start-->
+                @include('fontend.inc.sidebar')
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+
+                <!--state overview start-->
+                @yield('fontend')
+                <!--state overview end-->
+
 
         </section>
-      </section>
-<!--main content end-->
+        <!--main content end-->
 
-     <!-- Right Slidebar start -->
-     @include('fontend.inc.rightbar')
-     <!-- Right Slidebar end -->
+        <!-- Right Slidebar start -->
+        <div class="sb-slidebar sb-right sb-style-overlay">
+            @include('fontend.inc.rightbar')
+        </div>
+        <!-- Right Slidebar end -->
 
-     <!--footer start-->
-     <footer class="site-footer">
-         @include('fontend.inc.footer')
-     </footer>
-     <!--footer end-->
-  </section>
+        <!--footer start-->
+        <footer class="site-footer">
+            @include('fontend.inc.footer')
+        </footer>
+        <!--footer end-->
+    </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="{{ asset('fontend') }}/js/jquery.js"></script>
