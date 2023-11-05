@@ -1,5 +1,8 @@
 @extends('fontend.master')
 
+@section('u-title')
+    User-Profile
+@endsection
 
 @section('fontend')
 
@@ -38,16 +41,21 @@
                             <p><span>joining Date </span>: {{ Auth::user()->joining_date }}</p>
                         </div>
                         <div class="bio-row">
-                            <p><span>Country </span>: Australia</p>
+                            <p><span>Address </span>: {{ Auth::user()->address }}</p>
                         </div>
                         <div class="bio-row">
-                            <p><span>Birthday</span>: 13 July 1983</p>
+                            <p><span>Sallery</span>: {{ Auth::user()->sallery }}</p>
                         </div>
                         <div class="bio-row">
-                            <p><span>Occupation </span>: UI Designer</p>
+                            @if (Auth::user() == '1')
+                            <p><span>Occupation </span>: Admin</p>
+                            @else
+                            <p><span>Occupation </span>: Employee</p>
+                            @endif
+
                         </div>
                         <div class="bio-row">
-                            <p><span>Email </span>: jsmith@flatlab.com</p>
+                            <p><span>Email </span>: {{ Auth::user()->sallery }}</p>
                         </div>
                         <div class="bio-row">
                             <p><span>Mobile </span>: {{ $user->phone }}</p>

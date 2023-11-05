@@ -1,5 +1,7 @@
 @extends('fontend.master')
-
+@section('u-title')
+    Employee-All-Product
+@endsection
 @section('fontend')
 <section class="wrapper">
     <div class="row">
@@ -14,6 +16,7 @@
                             <thead>
                             <tr>
                                 <th>#sl</th>
+                                <th>Category Name</th>
                                 <th>Product Name</th>
                                 <th>Product Quantity</th>
                                 <th>Photo</th>
@@ -28,20 +31,39 @@
                             @foreach ($Products as $product)
                             <tr>
                                 <th> {{ $i++  }}</th>
+                                <td>{{ $product->Category->category_name }}</td>
                                 <td>{{ $product->product_name }}</td>
                                 <td>
-                                    @foreach ($product->stock as $stock)
+                                    {{-- @foreach ($product->stock as $stock)
                                         {{ $stock->qty }}
-                                    @endforeach
+                                    @endforeach --}}
+                                    @if ($product->stock->sum('qty') > 0)
+                                                <p class="badge bg-success">In Stock</p>
+                                            @else
+                                                <p class="badge bg-danger">Out of Stock</p>
+                                            @endif
                                 </td>
                                 <td>
                                     <img src="{{ asset('product/'. $product->product_img) }}" height="80px" width="70px" alt="">
                                 </td>
                                 <td>
-                                    <a href="{{ url('product-delete', $product->id) }}" class="btn btn-danger"><i class="fa  fa-external-link-square"></i></a>
+                                    @if ($product->stock->sum('qty') > 0)
+                                        <a href="{{ url('product/request/'.$product->id) }}" class="btn btn-primary">
+                                            <i class="fa fa-location-arrow"></i>
+                                        </a>
+                                    @else
+                                        <button class="btn btn-primary" disabled>
+                                            <i class="fa fa-location-arrow"></i>
+                                        </button>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach
+                            <td colspan="6">
+                                @if ($Products->count() > 0)
+                                    {{ $Products->links() }}
+                                @endif
+                            </td>
                             @else
                                 <th class="text-center text-danger" colspan="5"> Products Not Available</th>
                             @endif

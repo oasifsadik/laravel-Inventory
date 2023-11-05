@@ -10,7 +10,7 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="{{ asset('fontend') }}/img/favicon.html">
 
-    <title>@yield('title')</title>
+    <title>@yield('u-title')</title>
 
 
 

@@ -27,7 +27,7 @@ class FontendController extends Controller
     {
         if(Auth::check())
         {
-            $Products =Product::with('stock')->where('status','Active')->get();
+            $Products =Product::with('stock')->where('status','Active')->paginate(1);
 
         // dd($Products);
             return view('fontend.product.index',compact('Products'));

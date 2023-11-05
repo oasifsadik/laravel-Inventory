@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\EmpployeeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Fontend\FontendController;
+use App\Http\Controllers\Fontend\RequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/user_dashboard', [FontendController::class, 'index']);
     Route::get('/user_profile/{id}', [FontendController::class, 'profile']);
     Route::get('/all-pro',[FontendController::class,'product']);
+
+    //product Requeat sent
+    Route::get('product/request/{id}',[RequestController::class,'request']);
+    Route::post('product/request/{id}',[RequestController::class,'storeRequest']);
+    Route::get('/user/requests',[RequestController::class,'userRequests']);
 
 });
 Route::middleware(['auth','isAdmin'])->group(function(){

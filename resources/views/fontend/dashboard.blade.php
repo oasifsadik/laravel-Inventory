@@ -1,4 +1,7 @@
 @extends('fontend.master')
+@section('u-title')
+    Employee-Dashboard
+@endsection
 @section('fontend')
 <section class="wrapper">
     <div class="row state-overview">
