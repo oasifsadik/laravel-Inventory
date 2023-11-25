@@ -18,6 +18,17 @@ Add-Employee
                     @csrf
 
                     <div class="form-group">
+                        <label class="" >Select branch</label>
+                                <select class="custom-select mb-3" name="branch_id" id="branch_id">
+                                    <option selected disabled>Select branch</option>
+                                    @foreach ($branches as $branch)
+                                        <option value="{{ $branch->id }}" {{ old('branch_id') == $branch->id ? 'selected' : '' }}>
+                                            {{ $branch->branch_name  }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                    </div>
+                    <div class="form-group">
                         <label for="name">Employee Name</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter Employee Name" required>
                     </div>

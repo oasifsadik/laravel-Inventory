@@ -19,6 +19,7 @@ All-Employee
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>Branch Name</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Address</th>
@@ -37,6 +38,7 @@ All-Employee
                         @foreach ($employees as $employee)
                         <tr>
                             <th> {{ $i++  }}</th>
+                            <td>{{ $employee->branch->branch_name }}</td>
                             <td>{{ $employee->name }}</td>
                             <td>{{ $employee->email }}</td>
                             <td>{{ $employee->address }}</td>

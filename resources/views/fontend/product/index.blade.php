@@ -65,7 +65,7 @@
                                 @endif
                             </td>
                             @else
-                                <th class="text-center text-danger" colspan="5"> Products Not Available</th>
+                                <th class="text-center text-danger" colspan="6"> Products Not Available</th>
                             @endif
                             </tbody>
                         </table>

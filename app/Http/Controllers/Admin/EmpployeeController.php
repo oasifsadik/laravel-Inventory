@@ -5,17 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Branch;
 use Illuminate\Support\Facades\Hash;
 
 class EmpployeeController extends Controller
 {
     public function index()
     {
-        return view('admin.employee.index');
+        $branches = Branch::get();
+        return view('admin.employee.index',compact('branches'));
     }
     public function store(Request $request)
     {
         $employee = new User();
+        $employee->branch_id = $request->branch_id;
         $employee->name = $request->input('name');
         $employee->email = $request->input('email');
         $employee->address = $request->input('address');
@@ -38,7 +41,7 @@ class EmpployeeController extends Controller
     }
     public function show()
     {
-        $employees = User::get()->where('role_as', 0);
+        $employees = User::with('branch')->get()->where('role_as', 0);
         return view('admin.employee.allEmployee',compact('employees'));
     }
 
