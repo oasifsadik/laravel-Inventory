@@ -11,40 +11,27 @@ use Illuminate\Support\Facades\Auth;
 
 class RequestController extends Controller
 {
-    public function request($id)
-    {
-        $product = Product::find($id);
-        return view('fontend.product.request', compact('product'));
-    }
     public function storeRequest(Request $request,$id)
     {
-    //     $product = Product::find($id);
+        $product = Product::find($id);
 
-    // if ($product) {
-    //     $productRequest = new ProductRequest();
-    //     $productRequest->user_id = auth()->user()->id;
-    //     $productRequest->product_id = $product->id;
-    //     $productRequest->message = $request->input('message');
-    //     $productRequest->save();
-
-    //     return redirect('all-pro')->with('success', 'Product request sent successfully!');
-    // }
-    $product = Product::find($id);
-
-        if (!$product) {
+        if (!$product)
+        {
             return redirect('all-pro')->with('error', 'Product not found!');
         }
         $user = auth()->user();
-        $productRequest = new ProductRequest([
-            'user_id' => $user->id,
-            'product_id' => $product->id,
-            'message' => $request->input('message'),
-        ]);
+        $quantity = $request->input('quantity');
 
+        $productRequest = new ProductRequest([
+            'user_id'       => $user->id,
+            'product_id'    => $product->id,
+            'message'       => $request->input('message'),
+            'quantity'      => $quantity,
+        ]);
         $productRequest->save();
         $stock = Stock::where('product_id', $product->id)->first();
-        if ($stock) {
-            $stock->decrement('qty', 1);
+        if ($stock && $stock->qty > 0 && $stock->qty >= $quantity) {
+            $stock->decrement('qty', $quantity);
         }
         return redirect('all-pro')->with('success', 'Product request sent successfully!');
 

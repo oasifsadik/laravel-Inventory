@@ -6,10 +6,13 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EmpployeeController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductRequestController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Fontend\FontendController;
 use App\Http\Controllers\Fontend\RequestController;
+use App\Models\ProductRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +33,6 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/all-pro',[FontendController::class,'product']);
 
     //product Requeat sent
-    Route::get('product/request/{id}',[RequestController::class,'request']);
     Route::post('product/request/{id}',[RequestController::class,'storeRequest']);
     Route::get('/user/requests',[RequestController::class,'userRequests']);
 
@@ -65,5 +67,14 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::post('product-update/{id}',[ProductController::class,'update']);
     Route::get('product-delete/{id}',[ProductController::class,'delete']);
 
+    //Request Product
+    Route::get('/request/product',[ProductRequestController::class,'index']);
+    //Accept
+    Route::get('complate/order/{id}',[ProductRequestController::class,'complate']);
+    Route::get('complate/reject/{id}',[ProductRequestController::class,'reject']);
+
+    //order
+    Route::get('/compate/order',[OrderController::class,'index']);
+    Route::get('/compate/reject',[OrderController::class,'reject']);
 
 });

@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_requests', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('product_id');
             $table->string('quantity');
-            $table->enum('status',['accepted','reject','pending'])->default('pending');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_requests');
+        Schema::dropIfExists('orders');
     }
 };
