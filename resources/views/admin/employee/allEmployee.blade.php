@@ -28,6 +28,8 @@ All-Employee
                             <th>NID</th>
                             <th>Phone Number</th>
                             <th>photo</th>
+                            <th>Employee Status</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -49,9 +51,20 @@ All-Employee
                             <td>
                                 <img src="{{ asset('employee/'. $employee->photo) }}" height="80px" width="70px" alt="">
                             </td>
+                            <td class="text-center">
+                                @if ($employee->is_approved == '1' )
+                                    <h1 class="badge badge-pill badge-success font-bold">Active</h1>
+                                @else
+                                <h1 class="badge badge-pill badge-danger font-bold">Disable</h1>
+                                @endif
+                            </td>
                             <td>
-                                <a href="" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></a>
-                                <a href="{{ url('dashboard/delete', $employee->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                <a href="{{ url('dashboard/employees-approved',$employee->id) }}" class="btn btn-outline-primary btn-sm"><i class="fa fa-thumbs-up"></i></a>
+                                <a href="{{ url('dashboard/employees-reject', $employee->id) }}" class="btn btn-outline-dark btn-sm"><i class="fa fa-thumbs-down"></i></a>
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-outline-primary btn-sm"><i class="fa fa-pencil-square-o"></i></a>
+                                <a href="{{ url('dashboard/delete', $employee->id) }}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
                         @endforeach

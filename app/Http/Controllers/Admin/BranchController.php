@@ -19,8 +19,9 @@ class BranchController extends Controller
             'name' => 'required|string|max:255',
             'address' => 'required',
         ]);
+
         $branch = new Branch();
-        $branch->branch_name = $request->name;
+        $branch->branch_name    = $request->name;
         $branch->branch_address = $request->address;
         $branch->save();
         return redirect()->back()->with('success','Branch Adding Successfully');
@@ -42,7 +43,7 @@ class BranchController extends Controller
     public function update(Request $request, $id)
     {
         $branch = Branch::find($id);
-        $branch->branch_name = $request->name;
+        $branch->branch_name    = $request->name;
         $branch->branch_address = $request->address;
         $branch->update();
         return redirect('/all-branch');

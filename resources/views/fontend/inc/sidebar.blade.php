@@ -15,6 +15,8 @@
         <ul class="sub">
             <li><a  href="{{ url('/all-pro') }}">ALL Product</a></li>
             <li><a  href="{{ url('/user/requests') }}">Request Product</a></li>
+            <li><a  href="{{ url('/user/delever-product') }}">deliver Product</a></li>
+            <li><a  href="{{ url('/user/requests-reject') }}">reject  Product</a></li>
         </ul>
     </li>
 

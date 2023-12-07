@@ -14,12 +14,16 @@ class FontendController extends Controller
         $user = Auth::user();
         return view('fontend.dashboard', compact('user'));
     }
+
     public function profile()
     {
-        if (Auth::check()) {
+        if (Auth::check())
+        {
             $user = Auth::user();
             return view('fontend.profile.index', compact('user'));
-        } else {
+        }
+        else
+        {
             return redirect('login')->with('error', 'Please login first');
         }
     }
@@ -27,9 +31,7 @@ class FontendController extends Controller
     {
         if(Auth::check())
         {
-            $Products =Product::with('stock')->where('status','Active')->paginate(1);
-
-        // dd($Products);
+            $Products =Product::with('stock')->where('status','Active')->paginate(10);
             return view('fontend.product.index',compact('Products'));
         }
     }

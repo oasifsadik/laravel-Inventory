@@ -12,7 +12,6 @@ use App\Http\Controllers\Admin\ProductRequestController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Fontend\FontendController;
 use App\Http\Controllers\Fontend\RequestController;
-use App\Models\ProductRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,14 +34,19 @@ Route::middleware(['auth'])->group(function(){
     //product Requeat sent
     Route::post('product/request/{id}',[RequestController::class,'storeRequest']);
     Route::get('/user/requests',[RequestController::class,'userRequests']);
+    Route::get('/user/delever-product',[RequestController::class,'delevery']);
+    Route::get('/user/requests-reject',[RequestController::class,'reject']);
 
 });
 Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('/dashboard',[AdminController::class,'index']);
+    //employees
     Route::get('dashboard/employee',[EmpployeeController::class,'index']);
     Route::post('/add-employee',[EmpployeeController::class,'store']);
     Route::get('dashboard/allemployees',[EmpployeeController::class,'show']);
     Route::get('dashboard/delete/{id}',[EmpployeeController::class,'delete']);
+    Route::get('dashboard/employees-approved/{id}',[EmpployeeController::class,'approved']);
+    Route::get('dashboard/employees-reject/{id}',[EmpployeeController::class,'reject']);
 
     //Branch
     Route::get('/branch',[BranchController::class,'index']);

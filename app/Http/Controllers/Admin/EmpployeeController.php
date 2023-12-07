@@ -18,16 +18,16 @@ class EmpployeeController extends Controller
     public function store(Request $request)
     {
         $employee = new User();
-        $employee->branch_id = $request->branch_id;
-        $employee->name = $request->input('name');
-        $employee->email = $request->input('email');
-        $employee->address = $request->input('address');
-        $employee->sallery = $request->input('sallery');
+        $employee->branch_id    = $request->branch_id;
+        $employee->name         = $request->input('name');
+        $employee->email        = $request->input('email');
+        $employee->address      = $request->input('address');
+        $employee->sallery      = $request->input('sallery');
         $employee->joining_date = $request->input('joining_date');
-        $employee->nid = $request->input('nid');
-        $employee->phone = $request->input('phone');
-        $employee->password = Hash::make($request['password']);
-        $employee->photo = $request->input('photo');
+        $employee->nid          = $request->input('nid');
+        $employee->phone        = $request->input('phone');
+        $employee->password     = Hash::make($request['password']);
+        $employee->photo        = $request->input('photo');
         if($request->hasFile('photo'))
         {
             $file = $request->file('photo');
@@ -54,5 +54,21 @@ class EmpployeeController extends Controller
         $employee->delete();
         return back();
 
+    }
+
+    public function approved($id)
+    {
+        $approved = User::find($id);
+        $approved->is_approved = '1';
+        $approved->save();
+        return redirect()->back();
+    }
+
+    public function reject($id)
+    {
+        $approved = User::find($id);
+        $approved->is_approved = '0';
+        $approved->save();
+        return redirect()->back();
     }
 }

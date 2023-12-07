@@ -37,9 +37,29 @@ class RequestController extends Controller
 
     }
     public function userRequests()
-{
-    $user = Auth::user();
-    $requests = ProductRequest::where('user_id', $user->id)->with('product')->get();
-    return view('fontend.product.requestProduct', compact('requests'));
-}
+    {
+        $user = Auth::user();
+        $requests = ProductRequest::where('user_id', $user->id)
+                                    ->where('status','pending')
+                                    ->with('product')->get();
+        return view('fontend.product.requestProduct', compact('requests'));
+    }
+
+    public function delevery()
+    {
+        $user = Auth::user();
+        $requests = ProductRequest::where('user_id', $user->id)
+                                    ->where('status','accepted')
+                                    ->with('product')->get();
+        return view('fontend.product.requestProduct', compact('requests'));
+    }
+
+    public function reject()
+    {
+        $user = Auth::user();
+        $requests = ProductRequest::where('user_id', $user->id)
+                                    ->where('status','reject')
+                                    ->with('product')->get();
+        return view('fontend.product.requestProduct', compact('requests'));
+    }
 }

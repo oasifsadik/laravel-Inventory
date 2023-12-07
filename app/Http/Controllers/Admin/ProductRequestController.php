@@ -12,7 +12,9 @@ class ProductRequestController extends Controller
 {
     public function index()
     {
-        $requestProduct = ProductRequest::with('product','user')->where('status','pending')->get();
+        $requestProduct = ProductRequest::with('product','user')
+                                            ->where('status','pending')
+                                            ->get();
         return view('admin.request.requestProduct',compact('requestProduct'));
     }
     public function complate($id)
@@ -37,7 +39,8 @@ class ProductRequestController extends Controller
     public function reject($id)
     {
         $requestProduct = ProductRequest::find($id);
-        if (!$requestProduct) {
+        if (!$requestProduct)
+        {
             return redirect()->back()->with('error', 'Product request not found');
         }
         $requestProduct->status = 'reject';

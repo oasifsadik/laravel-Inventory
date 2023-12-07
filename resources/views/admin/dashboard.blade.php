@@ -47,6 +47,19 @@
             </div>
         </section>
     </div>
+    <div class="col-lg-4 col-sm-6">
+        <section class="card">
+            <div class="symbol blue">
+                <i class="fa fa-chain-broken"></i>
+            </div>
+            <div class="value">
+                <h1 class=" counct3">
+                    {{ $order }}
+                </h1>
+                <p>Complate Order</p>
+            </div>
+        </section>
+    </div>
     {{-- <div class="col-lg-3 col-sm-6">
         <section class="card">
             <div class="symbol blue">

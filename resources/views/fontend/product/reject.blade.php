@@ -31,7 +31,9 @@
                                 <th> {{ $i++  }}</th>
                                 <td>{{ $request->product->product_name }}</td>
                                 <td>{{ $request->product->Category->category_name }}</td>
-                                <td>{{ $request->status }}</td>
+                                <td>
+                                    <span class="badge badge-danger">{{ $request->status }}</span>
+                                </td>
                             </tr>
                             @endforeach
                             @else

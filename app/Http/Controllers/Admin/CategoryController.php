@@ -12,33 +12,38 @@ class CategoryController extends Controller
     {
         return view('admin.category.index');
     }
+
     public function store(Request $request)
     {
         $category = new Category();
-        $category->category_name = $request->category_name;
+        $category->category_name        = $request->category_name;
         $category->category_description = $request->category_description;
         $category->save();
         return redirect('/allCategory')->with('success','Category Insert Successfully');
     }
+
     public function show()
     {
         $category = Category::get();
         return view('admin.category.allCategory',compact('category'));
     }
+
     public function delete($id)
     {
         $category = Category::find($id);
         $category->delete();
         return redirect()->back()->with('error','Category Delete Successfully');
     }
+
     public function edit($id){
         $category = Category::find($id);
         return view('admin.category.edit',compact('category'));
     }
+
     public function update(Request $request,$id)
     {
         $category = Category::find($id);
-        $category->category_name = $request->category_name;
+        $category->category_name        = $request->category_name;
         $category->category_description = $request->category_description;
         $category->update();
 

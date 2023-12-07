@@ -38,15 +38,20 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
+
     protected function authenticated()
     {
         if(Auth::user()->role_as == '1') //1 = Admin Login
         {
             return redirect('dashboard')->with('success','Welcome to your dashboard');
         }
-        elseif(Auth::user()->role_as == '0') // Normal or Default User Login
+        elseif(Auth::user()->role_as == '0' && Auth::user()->is_approved == 1) // Normal or Default User Login
         {
             return redirect('/user_dashboard')->with('status','Logged in successfully');
+        }else {
+            // User is not approved, logout and redirect to login page
+            Auth::logout();
+            return redirect('/login')->with('warningS', 'Your account is not yet approved.');
         }
     }
 
