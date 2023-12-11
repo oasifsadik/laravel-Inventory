@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Branch;
 use Illuminate\Support\Facades\Hash;
 
 class EmpployeeController extends Controller

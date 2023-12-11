@@ -57,4 +57,37 @@ class FontendController extends Controller
             return back()->withErrors(['current_password' => 'The provided current password does not match our records.']);
         }
     }
+
+    public function profileEdit(Request $request,$id)
+    {
+        $update = User::find($id);
+        return view('fontend.profile.edit',compact('update'));
+    }
+
+    public function profileUpdate(Request $request,$id)
+    {
+        $update = User::find($id);
+        $update->name         = $request->input('name');
+        $update->email        = $request->input('email');
+        $update->address      = $request->input('address');
+        $update->phone        = $request->input('phone');
+        $deleteOldImage       ='employee/'.$update->photo;
+
+        if($image = $request->file('photo'))
+        {
+            if (file_exists($deleteOldImage))
+            {
+                unlink($deleteOldImage);
+            }
+            $customimage = uniqid().'.'.$image->getClientOriginalExtension();
+            $image->move("employee/" , $customimage);
+        }
+        else
+        {
+            $customimage = $update->photo;
+        }
+        $update->photo = $customimage;
+        $update->update();
+        return redirect()->back();
+    }
 }

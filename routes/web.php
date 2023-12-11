@@ -28,9 +28,11 @@ Route::get('/',[LoginController::class,'showLoginForm'] );
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/user_dashboard', [FontendController::class, 'index']);
-    Route::get('/user_profile/{id}', [FontendController::class, 'profile']);
+    Route::get('/user_profile/{id}', [FontendController::class, 'profile'])->name('profile');
     Route::post('/change-password', [FontendController::class, 'changePassword'])->name('change.password.post');
     Route::get('/all-pro',[FontendController::class,'product']);
+    Route::get('/profile_edit/{id}',[FontendController::class,'profileEdit']);
+    Route::post('/profile_update/{id}',[FontendController::class,'profileUpdate']);
 
     //product Requeat sent
     Route::post('product/request/{id}',[RequestController::class,'storeRequest']);

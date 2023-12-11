@@ -20,7 +20,7 @@
                 </div>
 
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="active nav-item"><a class="nav-link" href="profile.html"> <i class="fa fa-user"></i> Profile</a></li>
+                    <li class="active nav-item"><a class="nav-link" href="{{ url('/profile_edit',$user->id) }}"> <i class="fa fa-user"></i>Update Profile</a></li>
                     {{-- <li class="nav-item"><a class="nav-link" href="profile-activity.html"> <i class="fa fa-calendar"></i> Recent Activity <span class="badge badge-danger pull-right r-activity">9</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="profile-edit.html"> <i class="fa fa-edit"></i> Edit profile</a></li> --}}
                 </ul>
@@ -55,7 +55,7 @@
 
                         </div>
                         <div class="bio-row">
-                            <p><span>Email </span>: {{ Auth::user()->sallery }}</p>
+                            <p><span>Email </span>: {{ Auth::user()->email }}</p>
                         </div>
                         <div class="bio-row">
                             <p><span>Mobile </span>: {{ $user->phone }}</p>
