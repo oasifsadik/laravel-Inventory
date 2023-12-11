@@ -71,6 +71,40 @@
             </section>
         </aside>
     </div>
+    <div class="password">
+        <div class="col-md-6">
+            <h3 class="text-center">Update password</h3>
+            <form method="POST" action="{{ route('change.password.post') }}">
+                @csrf
+
+                <div class="form-group">
+                    <label for="current_password">Current Password</label>
+                    <input class="form-control" id="current_password" type="password" name="current_password" required>
+                    @error('current_password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="password">New Password</label>
+                    <input class="form-control" id="password" type="password" name="password" required>
+                    @error('password')
+                        <span>{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="password_confirmation">Confirm New Password</label>
+                    <input class="form-control" id="password_confirmation" type="password" name="password_confirmation" required>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-secondary">Change Password</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
 
 </section>
 @endsection

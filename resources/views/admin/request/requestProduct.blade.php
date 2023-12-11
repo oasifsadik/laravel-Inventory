@@ -4,8 +4,6 @@
 Request Product
 @endsection
 
-
-
 @section('content')
 <div class="row">
     <div class="col-lg-12">
@@ -17,15 +15,15 @@ Request Product
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Branch Name</th>
-                            <th>Employee Name</th>
-                            <th>product Name</th>
-                            <th>Phone Number</th>
-                            <th>Quantity</th>
-                            <th class="text-center">Action</th>
-                        </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Branch Name</th>
+                                <th>Employee Name</th>
+                                <th>Product Name</th>
+                                <th>Phone Number</th>
+                                <th>Quantity</th>
+                                <th class="text-center">Action</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @php
@@ -35,14 +33,41 @@ Request Product
                                 <tr>
                                     <td>{{ $sl++ }}</td>
                                     <td>{{ $item->user->branch->branch_name }}</td>
-                                    <td>{{ $item->user->name}}</td>
+                                    <td>{{ $item->user->name }}</td>
                                     <td>{{ $item->product->product_name }}</td>
                                     <td>{{ $item->user->phone }}</td>
                                     <td>{{ $item->quantity }}</td>
-                                        <td class="d-flex">
-                                            <a href="{{ url('complate/order',$item->id) }}" class="btn btn-outline-secondary btn-sm w-50 m-1">Accept</a>
-                                            <a href="{{ url('complate/reject',$item->id) }}" class="btn btn-outline-danger btn-sm w-50 m-1">Reject</a>
-                                        </td>
+                                    <td class="d-flex">
+                                        <a href="{{ url('complate/order',$item->id) }}" class="btn btn-outline-secondary btn-sm w-50 m-1">Accept</a>
+                                        <button type="button" class="btn btn-outline-danger btn-sm w-50 m-1" data-toggle="modal" data-target="#rejectModal{{$item->id}}">
+                                            Reject
+                                        </button>
+                                        <!-- Rejection Modal -->
+                                        <div class="modal fade" id="rejectModal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel{{$item->id}}" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <form action="{{ url('complate/reject',$item->id) }}" method="POST">
+                                                        @csrf
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="rejectModalLabel{{$item->id}}">Reject Order</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <label for="rejection_reason{{$item->id}}">Reason for Rejection:</label>
+                                                            <textarea class="form-control" id="rejection_reason{{$item->id}}" name="rejection_reason" rows="3" required></textarea>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-danger">Confirm Reject</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End of Rejection Modal -->
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

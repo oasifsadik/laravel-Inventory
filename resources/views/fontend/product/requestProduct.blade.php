@@ -18,6 +18,7 @@
                                 <th>#sl</th>
                                 <th>Product Name</th>
                                 <th>Category Name</th>
+                                <th>Note</th>
                                 <th>Status</th>
                             </tr>
                             </thead>
@@ -31,11 +32,12 @@
                                 <th> {{ $i++  }}</th>
                                 <td>{{ $request->product->product_name }}</td>
                                 <td>{{ $request->product->Category->category_name }}</td>
+                                <td>{{ $request->rejection_reason }}</td>
                                 <td>{{ $request->status }}</td>
                             </tr>
                             @endforeach
                             @else
-                                <th class="text-center text-danger" colspan="4"> No Requests Found</th>
+                                <th class="text-center text-danger" colspan="5"> No Requests Found</th>
                             @endif
                             </tbody>
                         </table>

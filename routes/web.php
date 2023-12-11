@@ -29,6 +29,7 @@ Route::get('/',[LoginController::class,'showLoginForm'] );
 Route::middleware(['auth'])->group(function(){
     Route::get('/user_dashboard', [FontendController::class, 'index']);
     Route::get('/user_profile/{id}', [FontendController::class, 'profile']);
+    Route::post('/change-password', [FontendController::class, 'changePassword'])->name('change.password.post');
     Route::get('/all-pro',[FontendController::class,'product']);
 
     //product Requeat sent
@@ -75,7 +76,7 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('/request/product',[ProductRequestController::class,'index']);
     //Accept
     Route::get('complate/order/{id}',[ProductRequestController::class,'complate']);
-    Route::get('complate/reject/{id}',[ProductRequestController::class,'reject']);
+    Route::post('complate/reject/{id}',[ProductRequestController::class,'reject']);
 
     //order
     Route::get('/compate/order',[OrderController::class,'index']);

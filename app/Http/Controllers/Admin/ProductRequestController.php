@@ -36,14 +36,16 @@ class ProductRequestController extends Controller
         return redirect()->back()->with('success', 'Product request completed and added to orders.');
     }
 
-    public function reject($id)
+    public function reject(Request $request,$id)
     {
         $requestProduct = ProductRequest::find($id);
         if (!$requestProduct)
         {
             return redirect()->back()->with('error', 'Product request not found');
         }
+        $requestProduct->rejection_reason =$request->rejection_reason;
         $requestProduct->status = 'reject';
+        // dd($requestProduct);
         $requestProduct->save();
         return redirect()->back()->with('warning', 'Product rejected.');
     }

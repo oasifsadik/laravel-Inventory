@@ -14,6 +14,7 @@ class ProductRequest extends Model
         'user_id',
         'product_id',
         'quantity',
+        'rejection_reason',
     ];
 
     public function product()

@@ -24,6 +24,7 @@ Request Product
                             <th>product Name</th>
                             <th>Phone Number</th>
                             <th>Quantity</th>
+                            <th>note</th>
                             <th>Status</th>
                         </tr>
                         </thead>
@@ -39,6 +40,7 @@ Request Product
                                     <td>{{ $item->product->product_name }}</td>
                                     <td>{{ $item->user->phone }}</td>
                                     <td>{{ $item->quantity }}</td>
+                                    <td>{{ $item->rejection_reason }}</td>
                                     <td><span class="badge badge-danger">reject</span></td>
                                 </tr>
                             @endforeach
