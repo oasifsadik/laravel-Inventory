@@ -7,6 +7,7 @@ use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class EmpployeeController extends Controller
 {
@@ -36,7 +37,18 @@ class EmpployeeController extends Controller
             $file->move('employee/',$filename);
             $employee->photo =$filename;
         }
-        $employee->save();
+
+        $emp = $employee->save();
+
+        if($emp) {
+            Mail::send('email.user-register', ['data' => $employee, 'password' => $request['password']],
+            function ($message) use ($employee)
+            {
+                $message->from('info@example.com')->to($employee->email)->subject('Register Info');
+            });
+        }
+
+
         return redirect('dashboard/allemployees');
     }
     public function show()
