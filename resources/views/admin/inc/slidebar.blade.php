@@ -69,6 +69,15 @@
                 <li><a  href="{{ url('/return-product') }}">Return Product</a></li>
             </ul>
         </li>
+        <li class="sub-menu">
+            <a href="javascript:;" >
+                <i class="fa fa-shopping-cart"></i>
+                <span>Wishlist</span>
+            </a>
+            <ul class="sub">
+                <li><a  href="{{ url('wishlist') }}">Wishlist</a></li>
+            </ul>
+        </li>
 
 
 

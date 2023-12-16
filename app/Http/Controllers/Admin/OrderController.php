@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductRequest;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use App\Models\Wishlist;
 
 class OrderController extends Controller
 {
@@ -29,10 +30,17 @@ class OrderController extends Controller
     public function report(Request $request)
     {
         $startDate = Carbon::parse($request->input('start_date'))->startOfDay();
-    $endDate = Carbon::parse($request->input('end_date'))->endOfDay();
+        $endDate = Carbon::parse($request->input('end_date'))->endOfDay();
 
-    $report = Order::whereBetween('created_at', [$startDate, $endDate])
-        ->get();
+        $report = Order::whereBetween('created_at', [$startDate, $endDate])
+            ->get();
         return view('admin.report.generateReport', compact('report'));
+    }
+
+    public function wishlist()
+    {
+        $wishlist = Wishlist::get();
+        return view('admin.wishlist',compact('wishlist'));
+
     }
 }

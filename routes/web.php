@@ -95,5 +95,6 @@ Route::middleware(['auth','isAdmin'])->group(function(){
 
     //report
     Route::get('generate-report',[OrderController::class,'report']);
+    Route::get('wishlist',[OrderController::class,'wishlist']);
 
 });
