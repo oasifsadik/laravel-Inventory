@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductRequestController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Fontend\FontendController;
 use App\Http\Controllers\Fontend\RequestController;
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,12 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/user/delever-product',[RequestController::class,'delevery']);
     Route::get('/user/requests-reject',[RequestController::class,'reject']);
     Route::post('/user/product-return/{id}',[RequestController::class,'return']);
+
+    #wishlist
+    Route::get('/wishlist',[WishlistController::class,'index']);
+    Route::get('/add-wishlist',[WishlistController::class,'add']);
+    Route::post('/store-wishlist',[WishlistController::class,'store']);
+    Route::get('delete-wishlist/{id}',[WishlistController::class,'delete']);
 
 });
 Route::middleware(['auth','isAdmin'])->group(function(){

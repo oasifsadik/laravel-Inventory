@@ -68,7 +68,7 @@
                             </tr>
                             @endforeach
                             @else
-                                <th class="text-center text-danger" colspan="4"> No Requests Found</th>
+                                <th class="text-center text-danger" colspan="5"> No Requests Found</th>
                             @endif
                             </tbody>
                         </table>
