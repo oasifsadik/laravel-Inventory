@@ -9,14 +9,24 @@ Employee-All-Product
         <div class="col-lg-12">
             <section class="card">
                 <header class="card-header">
-                    All Product
+                    <h1>All Product</h1>
+                    <form action="{{ url('/all-pro') }}" method="GET">
+                        <div class="col-md-6 form-group d-flex ">
+                            <input class="form-control m-2" type="text" name="search" placeholder="Enter Product Name">
+                            <button class="btn btn-secondary m-2">search</button>
+                            <a href="{{ url('/all-pro') }}" class="btn btn-success m-2">refresh</a>
+                        </div>
+
+                    </form>
                 </header>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>#sl</th>
+                                    <th>ID</th>
                                     <th>Category Name</th>
                                     <th>Product Name</th>
                                     <th>Product Quantity</th>
@@ -30,6 +40,7 @@ Employee-All-Product
                                 @foreach ($Products as $product)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $product->pro_id }}</td>
                                     <td>{{ $product->Category->category_name }}</td>
                                     <td>{{ $product->product_name }}</td>
                                     <td>
@@ -46,7 +57,7 @@ Employee-All-Product
                                         @csrf
                                         <td>
 
-                                            <input type="number" name="quantity" min="1" max="{{ $product->stock->sum('qty') }}">
+                                            <input type="number" name="quantity" min="1" max="2">
                                         </td>
                                         <td>
                                             @if ($product->stock->sum('qty') > 0)
@@ -66,14 +77,14 @@ Employee-All-Product
                                 </tr>
                                 @endforeach
 
-                                <td colspan="7">
+                                <td colspan="8">
                                     @if ($Products->count() > 0)
                                     {{ $Products->links() }}
                                     @endif
                                 </td>
                                 @else
                                 <tr>
-                                    <td class="text-center text-danger" colspan="7"> Products Not Available</td>
+                                    <td class="text-center text-danger" colspan="8"> Products Not Available</td>
                                 </tr>
                                 @endif
                             </tbody>

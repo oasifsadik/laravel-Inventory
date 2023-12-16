@@ -13,6 +13,9 @@ class RequestController extends Controller
 {
     public function storeRequest(Request $request,$id)
     {
+        $request->validate([
+            'quantity' => 'required|min:1|max:2',
+        ]);
         $product = Product::find($id);
 
         if (!$product)
@@ -51,7 +54,7 @@ class RequestController extends Controller
         $requests = ProductRequest::where('user_id', $user->id)
                                     ->where('status','accepted')
                                     ->with('product')->get();
-        return view('fontend.product.requestProduct', compact('requests'));
+        return view('fontend.product.delever', compact('requests'));
     }
 
     public function reject()
@@ -61,5 +64,20 @@ class RequestController extends Controller
                                     ->where('status','reject')
                                     ->with('product')->get();
         return view('fontend.product.requestProduct', compact('requests'));
+    }
+
+    public function return(Request $request,$id)
+    {
+        $return = ProductRequest::find($id);
+        if (!$return)
+        {
+            return redirect()->back()->with('error', 'Product request not found');
+        }
+        $return->rejection_reason = $request->rejection_reason;
+        $return->status = 'return';
+        $return->save();
+        return redirect()->back();
+
+
     }
 }

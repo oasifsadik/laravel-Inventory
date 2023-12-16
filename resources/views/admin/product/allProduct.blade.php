@@ -19,10 +19,12 @@ All-Product
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Category Name</th>
                             <th>Description</th>
                             <th>Buying Date</th>
+                            <th>Stock Date</th>
                             <th>Buying Price</th>
                             <th>Product Quantity</th>
                             <th>Status</th>
@@ -37,10 +39,12 @@ All-Product
                         @foreach ($products as $product)
                         <tr>
                             <th> {{ $i++  }}</th>
+                            <th> {{ $product->pro_id  }}</th>
                             <td>{{ $product->product_name }}</td>
                             <td>{{ $product->Category->category_name }}</td>
                             <td>{{ $product->product_description }}</td>
                             <td>{{ $product->buying_date }}</td>
+                            <td>{{ $product->stock_date }}</td>
                             <td>{{ $product->buying_price }}</td>
                             <td>
                                 @foreach ($product->stock as $stock)

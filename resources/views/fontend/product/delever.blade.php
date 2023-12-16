@@ -19,6 +19,7 @@
                                 <th>Product Name</th>
                                 <th>Category Name</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             @php
@@ -33,6 +34,36 @@
                                 <td>{{ $request->product->Category->category_name }}</td>
                                 <td>
                                     <span class="badge badge-info">{{ $request->status }}</span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger btn-sm w-50 m-1" data-toggle="modal" data-target="#rejectModal{{$request->id}}">
+                                        Return
+                                    </button>
+                                    <!-- Rejection Modal -->
+                                    <div class="modal fade" id="rejectModal{{$request->id}}" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel{{$request->id}}" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <form action="{{ url('/user/product-return', $request->id) }}" method="POST">
+                                                    @csrf
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="rejectModalLabel{{$request->id}}">Return Product</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <label for="rejection_reason{{$request->id}}">Reason for Return:</label>
+                                                        <textarea class="form-control" id="rejection_reason{{$request->id}}" name="rejection_reason" rows="3" required></textarea>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger">Confirm Return</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End of Rejection Modal -->
                                 </td>
                             </tr>
                             @endforeach

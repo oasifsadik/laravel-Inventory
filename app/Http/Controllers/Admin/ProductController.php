@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Stock;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -25,16 +26,20 @@ class ProductController extends Controller
             'product_description'   => 'required|string',
             'product_img'           => 'required',
             'buying_date'           => 'required|date',
+            'stock_date'           => 'required|date',
             'buying_price'          => 'required|numeric',
             'status'                => 'required',
             'qty'                   => 'required|integer',
         ]);
+        $uniqueProductId = mt_rand(100000, 999999);
         $product = Product::create([
             'cat_id'                => $request->cat_id,
+            'pro_id'                => $uniqueProductId,
             'product_name'          => $request->name,
             'product_description'   => $request->product_description,
             'product_img'           => $request->product_img,
             'buying_date'           => $request->buying_date,
+            'stock_date'           => $request->stock_date,
             'buying_price'          => $request->buying_price,
             'status'                => $request->status,
         ]);

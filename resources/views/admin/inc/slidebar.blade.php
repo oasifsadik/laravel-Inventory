@@ -55,8 +55,18 @@
             </a>
             <ul class="sub">
                 <li><a  href="{{ url('/request/product') }}">Request Product</a></li>
+            </ul>
+        </li>
+        <li class="sub-menu">
+            <a href="javascript:;" >
+                <i class="fa fa-shopping-cart"></i>
+                <span>Report</span>
+            </a>
+            <ul class="sub">
+                <li><a  href="{{ url('generate-report') }}">Report generate</a></li>
                 <li><a  href="{{ url('/compate/order') }}">completed orders</a></li>
                 <li><a  href="{{ url('/compate/reject') }}">Reject orders</a></li>
+                <li><a  href="{{ url('/return-product') }}">Return Product</a></li>
             </ul>
         </li>
 

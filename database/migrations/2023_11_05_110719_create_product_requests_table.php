@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigInteger('product_id');
             $table->string('quantity');
             $table->string('rejection_reason')->nullable();
-            $table->enum('status',['accepted','reject','pending'])->default('pending');
+            $table->enum('status',['accepted','reject','pending','return'])->default('pending');
             $table->timestamps();
         });
     }

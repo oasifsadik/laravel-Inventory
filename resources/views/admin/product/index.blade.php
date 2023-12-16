@@ -74,6 +74,15 @@ Add-Product
                                   <div class="text-danger">{{ $message }}</div>
                                 @enderror
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="buying_date">Stock Date</label>
+                                <input type="date" class="form-control" id="stock_date" name="stock_date" value="{{ old('stock_date') }}">
+                                @error('stock_date')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">

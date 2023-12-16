@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/user/requests',[RequestController::class,'userRequests']);
     Route::get('/user/delever-product',[RequestController::class,'delevery']);
     Route::get('/user/requests-reject',[RequestController::class,'reject']);
+    Route::post('/user/product-return/{id}',[RequestController::class,'return']);
 
 });
 Route::middleware(['auth','isAdmin'])->group(function(){
@@ -83,5 +84,9 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     //order
     Route::get('/compate/order',[OrderController::class,'index']);
     Route::get('/compate/reject',[OrderController::class,'reject']);
+    Route::get('/return-product',[OrderController::class,'returnProduct']);
+
+    //report
+    Route::get('generate-report',[OrderController::class,'report']);
 
 });

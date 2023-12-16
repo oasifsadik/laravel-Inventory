@@ -30,11 +30,17 @@ class FontendController extends Controller
             return redirect('login')->with('error', 'Please login first');
         }
     }
-    public function product()
+    public function product(Request $request)
     {
         if(Auth::check())
         {
-            $Products =Product::with('stock')->where('status','Active')->paginate(10);
+            $ProductSql =Product::with('stock')->where('status','Active');
+            if ($request->search) {
+                $ProductSql->where('product_name', 'like', '%' . $request->search . '%');
+                $ProductSql->orWhere('pro_id', 'like', '%' . $request->search . '%');
+            }
+            $Products = $ProductSql->paginate(10);
+
             return view('fontend.product.index',compact('Products'));
         }
     }
