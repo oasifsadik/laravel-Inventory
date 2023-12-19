@@ -25,7 +25,7 @@ class AdminController extends Controller
             'product',
             'order',
            ];
-              return view('admin.dashboard',compact($data));
+              return view('admin.dashboard', compact($data));
         }
          else
         {

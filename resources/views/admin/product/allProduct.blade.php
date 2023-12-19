@@ -24,7 +24,6 @@ All-Product
                             <th>Category Name</th>
                             <th>Description</th>
                             <th>Buying Date</th>
-                            <th>Stock Date</th>
                             <th>Buying Price</th>
                             <th>Product Quantity</th>
                             <th>Status</th>
@@ -44,13 +43,8 @@ All-Product
                             <td>{{ $product->Category->category_name }}</td>
                             <td>{{ $product->product_description }}</td>
                             <td>{{ $product->buying_date }}</td>
-                            <td>{{ $product->stock_date }}</td>
                             <td>{{ $product->buying_price }}</td>
-                            <td>
-                                @foreach ($product->stock as $stock)
-                                    {{ $stock->qty }}
-                                @endforeach
-                            </td>
+                            <td> {{ $product->total_qty }}</td>
                             <td>
                                 @if ($product->status === 'Active')
                                     <span class="badge  bg-success text-white  p-1">Active</span>
@@ -62,6 +56,7 @@ All-Product
                                 <img src="{{ asset('product/'. $product->product_img) }}" height="80px" width="70px" alt="">
                             </td>
                             <td>
+                                <a href="{{ url('single-product', $product->id) }}" class="btn btn-success"><i class="fa fa-eye"></i></a>
                                 <a href="{{url('product-edit',$product->id)}}" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></a>
                                 <a href="{{ url('product-delete', $product->id) }}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                             </td>

@@ -81,6 +81,17 @@ Route::middleware(['auth','isAdmin'])->group(function(){
     Route::get('product-edit/{id}',[ProductController::class,'edit']);
     Route::post('product-update/{id}',[ProductController::class,'update']);
     Route::get('product-delete/{id}',[ProductController::class,'delete']);
+    Route::get('single-product/{id}',[ProductController::class,'single']);
+    Route::post('/product/{product_id}/add-stock', [ProductController::class,'addStock'])->name('add.stock');
+    Route::delete('/product/{product_id}/stock/{stock_id}', [ProductController::class,'deleteStock'])->name('delete.stock');
+    Route::get('/product/{product_id}/stock/{stock_id}/edit', [ProductController::class,'showUpdateStockForm'])->name('show.update.stock.form');
+    Route::put('/product/{product_id}/stock/{stock_id}', [ProductController::class,'updateStock'])->name('update.stock');
+
+
+
+
+
+
 
     //Request Product
     Route::get('/request/product',[ProductRequestController::class,'index']);
@@ -95,6 +106,6 @@ Route::middleware(['auth','isAdmin'])->group(function(){
 
     //report
     Route::get('generate-report',[OrderController::class,'report']);
-    Route::get('wishlist',[OrderController::class,'wishlist']);
+    Route::get('wishlist-pro',[OrderController::class,'wishlist']);
 
 });

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
+            $table->date('stock_date');
             $table->string('qty');
             $table->timestamps();
         });

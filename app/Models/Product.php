@@ -19,7 +19,6 @@ class Product extends Model
         'product_description',
         'product_img',
         'buying_date',
-        'stock_date',
         'buying_price',
         'status',
     ];

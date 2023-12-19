@@ -39,7 +39,6 @@ class ProductController extends Controller
             'product_description'   => $request->product_description,
             'product_img'           => $request->product_img,
             'buying_date'           => $request->buying_date,
-            'stock_date'           => $request->stock_date,
             'buying_price'          => $request->buying_price,
             'status'                => $request->status,
         ]);
@@ -55,6 +54,7 @@ class ProductController extends Controller
         $stock = Stock::create([
             'product_id'    => $product->id,
             'qty'           =>$request->qty,
+            'stock_date'           =>$request->stock_date,
         ]);
         $product->stock()->save($stock);
 
@@ -65,7 +65,7 @@ class ProductController extends Controller
     public function show()
     {
 
-        $products = Product::with('stock')->get();
+        $products = Product::with('stock')->withSum('stock as total_qty', 'qty') ->get();;
         return view('admin.product.allProduct',compact('products'));
     }
     public function edit($id)
@@ -123,5 +123,46 @@ class ProductController extends Controller
         return back()->with('error','Product Delete Successfully');
     }
 
+    public function single($id)
+    {
+        $product = Product::find($id);
+        return view('admin.product.singleProduct',compact('product'));
+    }
+    public function addStock(Request $request, $product_id)
+    {
+        $product = Product::findOrFail($product_id);
+
+        $stock = new Stock();
+        $stock->stock_date = $request->input('stock_date');
+        $stock->qty = $request->input('qty');
+        $stock->product_id = $product->id;
+        $stock->save();
+        return redirect()->back()->with('success','Stock Add Successfully!');
+    }
+
+    public function deleteStock($product_id, $stock_id)
+    {
+        $stock = Stock::where('product_id', $product_id)->findOrFail($stock_id);
+        $stock->delete();
+
+        return redirect()->back()->with('success', 'Stock deleted successfully');
+    }
+
+    public function showUpdateStockForm($product_id, $stock_id)
+    {
+        $stock = Stock::where('product_id', $product_id)->findOrFail($stock_id);
+        return view('your_blade_file', compact('stockToUpdate'));
+    }
+
+    public function updateStock(Request $request, $product_id, $stock_id)
+    {
+        $stock = Stock::where('product_id', $product_id)->findOrFail($stock_id);
+        $stock->update([
+            'stock_date' => $request->input('stock_date'),
+            'qty' => $request->input('qty'),
+        ]);
+
+        return redirect()->back()->with('success', 'Stock updated successfully');
+    }
 
 }

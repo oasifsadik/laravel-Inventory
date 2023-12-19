@@ -75,7 +75,7 @@
                 <span>Wishlist</span>
             </a>
             <ul class="sub">
-                <li><a  href="{{ url('wishlist') }}">Wishlist</a></li>
+                <li><a  href="{{ url('wishlist-pro') }}">Wishlist</a></li>
             </ul>
         </li>
 

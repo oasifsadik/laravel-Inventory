@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('product_description');
             $table->string('product_img');
             $table->string('buying_date');
-            $table->string('stock_date');
             $table->string('buying_price');
             $table->enum('status',['Active','Inactive'])->default('Inactive');
             $table->timestamps();
