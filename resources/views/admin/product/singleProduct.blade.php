@@ -29,17 +29,22 @@ All-Product
 
 
 
-                <table class="table rounded stripe bg-white shadow">
+                <table class="table table-bordered rounded stripe bg-white shadow">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
+                            <th>#</th>
                             <th>Stock-In-Date</th>
                             <th>Quantity</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $i=1;
+                        @endphp
                         @foreach ($product->stock as $stock)
-                        <tr>
+                        <tr class="text-center">
+                            <td>{{ $i++ }}</td>
                             <td>{{ $stock->stock_date }}</td>
                             <td>{{ $stock->qty }}</td>
                             <td class="d-flex ">
