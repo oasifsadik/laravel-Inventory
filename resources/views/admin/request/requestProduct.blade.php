@@ -5,7 +5,10 @@ Request Product
 @endsection
 
 @section('content')
-<div class="row">
+<div class="container-fluid">
+    <h2><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i></a>|<a href="{{ url('/compate/order') }}"><i class="fa fa-check-circle"></i></a>|<a href="{{ url('/compate/reject') }}"><i class="fa  fa-times-circle"></i></a></h2>
+
+<div class="row mt-3">
     <div class="col-lg-12">
         <section class="card">
             <header class="card-header">
@@ -76,5 +79,6 @@ Request Product
             </div>
         </section>
     </div>
+</div>
 </div>
 @endsection

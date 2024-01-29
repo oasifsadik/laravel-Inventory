@@ -3,7 +3,9 @@
         <i class="fa fa-bars"></i>
     </div>
   <!--logo start-->
-  <a href="index.html" class="logo">Ad<span>min</span></a>
+  <a href="{{ url('dashboard') }}" class="logo">
+    <img src="{{ asset('fontend/img/logo/uttara-bank-logo.png') }}" height="30px" alt="">
+</a>
   <!--logo end-->
   <div class="nav notify-row" id="top_menu">
       <!--  notification start -->
@@ -240,9 +242,7 @@
                   </li>
               </ul>
           </li>
-          <li class="sb-toggle-right">
-              <i class="fa  fa-align-right"></i>
-          </li>
+
           <!-- user login dropdown end -->
       </ul>
       <!--search & user info end-->

@@ -25,8 +25,8 @@ class ProductController extends Controller
             'name'                  => 'required|string|max:255',
             'product_description'   => 'required|string',
             'product_img'           => 'required',
-            'buying_date'           => 'required|date',
-            'stock_date'           => 'required|date',
+            'buying_date'           => 'required|date|before:tomorrow',
+            'stock_date'           => 'required|date|before:tomorrow',
             'buying_price'          => 'required|numeric',
             'status'                => 'required',
             'qty'                   => 'required|integer',
@@ -42,7 +42,8 @@ class ProductController extends Controller
             'buying_price'          => $request->buying_price,
             'status'                => $request->status,
         ]);
-        if ($request->hasFile('product_img')) {
+        if ($request->hasFile('product_img'))
+        {
             $file = $request->file('product_img');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
@@ -65,7 +66,7 @@ class ProductController extends Controller
     public function show()
     {
 
-        $products = Product::with('stock')->withSum('stock as total_qty', 'qty') ->get();;
+        $products = Product::with('stock')->withSum('stock as total_qty', 'qty')->get();
         return view('admin.product.allProduct',compact('products'));
     }
     public function edit($id)
@@ -128,6 +129,8 @@ class ProductController extends Controller
         $product = Product::find($id);
         return view('admin.product.singleProduct',compact('product'));
     }
+
+
     public function addStock(Request $request, $product_id)
     {
         $product = Product::findOrFail($product_id);
@@ -139,6 +142,7 @@ class ProductController extends Controller
         $stock->save();
         return redirect()->back()->with('success','Stock Add Successfully!');
     }
+
 
     public function deleteStock($product_id, $stock_id)
     {

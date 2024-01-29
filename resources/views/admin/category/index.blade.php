@@ -7,7 +7,10 @@ Add-Category
 
 
 @section('content')
-<div class="row">
+<div class="container-fluid">
+    <h2><a href="{{ url('dashboard') }}"><i class="fa fa-home"></i></a>|<a href="{{ url('/allCategory') }}">Category</a></h2>
+
+<div class="row mt-3">
     <div class="col-lg-6 offset-3">
         <section class="card">
             <header class="card-header">
@@ -32,5 +35,6 @@ Add-Category
             </div>
         </section>
     </div>
+</div>
 </div>
 @endsection

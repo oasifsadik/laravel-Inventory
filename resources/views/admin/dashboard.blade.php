@@ -8,6 +8,7 @@
 
 
 <div class="row state-overview">
+{{-- user --}}
     <div class="col-lg-4 col-sm-6">
         <section class="card">
             <div class="symbol terques">
@@ -21,6 +22,9 @@
             </div>
         </section>
     </div>
+{{-- enduser --}}
+
+{{-- category --}}
     <div class="col-lg-4 col-sm-6">
         <section class="card">
             <div class="symbol red">
@@ -34,6 +38,9 @@
             </div>
         </section>
     </div>
+{{-- endCategory --}}
+
+{{-- product --}}
     <div class="col-lg-4 col-sm-6">
         <section class="card">
             <div class="symbol yellow">
@@ -47,6 +54,9 @@
             </div>
         </section>
     </div>
+    {{-- endproduct --}}
+
+    {{-- complateorder --}}
     <div class="col-lg-4 col-sm-6">
         <section class="card">
             <div class="symbol blue">
@@ -60,19 +70,7 @@
             </div>
         </section>
     </div>
-    {{-- <div class="col-lg-3 col-sm-6">
-        <section class="card">
-            <div class="symbol blue">
-                <i class="fa fa-bar-chart-o"></i>
-            </div>
-            <div class="value">
-                <h1 class=" count4">
-                    0
-                </h1>
-                <p>Total Profit</p>
-            </div>
-        </section>
-    </div> --}}
+    {{-- endcomplteorder --}}
 </div>
 
 

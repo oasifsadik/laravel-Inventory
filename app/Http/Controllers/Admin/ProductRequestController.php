@@ -45,7 +45,6 @@ class ProductRequestController extends Controller
         }
         $requestProduct->rejection_reason =$request->rejection_reason;
         $requestProduct->status = 'reject';
-        // dd($requestProduct);
         $requestProduct->save();
         return redirect()->back()->with('warning', 'Product rejected.');
     }

@@ -7,11 +7,14 @@ Request Product
 
 
 @section('content')
+<div class="container-fluid">
+    <h2 class="mb-3"><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i></a>|<a href="{{ url('generate-report') }}"><i class=" fa fa-file-text"></i></a></h2>
+
 <div class="row">
     <div class="col-lg-12">
         <section class="card">
             <header class="card-header">
-                All Request Product
+                All Return Product
             </header>
             <div class="card-body">
                 <div class="table-responsive">
@@ -50,5 +53,6 @@ Request Product
             </div>
         </section>
     </div>
+</div>
 </div>
 @endsection

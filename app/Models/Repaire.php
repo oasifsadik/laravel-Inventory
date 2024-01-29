@@ -5,16 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Wishlist extends Model
+class Repaire extends Model
 {
     use HasFactory;
-    protected $table = 'wishlists';
-    protected $fillable =[
+    protected $table ='repaires';
+    protected $fillable =
+    [
         'user_id',
-        'wname',
+        'product_id',
+        'description',
         'status',
     ];
 
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
     public function user()
     {
         return $this->belongsTo(User::class);

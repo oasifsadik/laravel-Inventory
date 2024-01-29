@@ -18,6 +18,10 @@ class EmpployeeController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'nid' => 'required|min:8|max:10',
+            'phone' => 'required|min:11|max:11',
+        ]);
         $employee = new User();
         $employee->branch_id    = $request->branch_id;
         $employee->name         = $request->input('name');
@@ -55,6 +59,12 @@ class EmpployeeController extends Controller
     {
         $employees = User::with('branch')->get()->where('role_as', 0);
         return view('admin.employee.allEmployee',compact('employees'));
+    }
+
+    public function edit($id)
+    {
+        $employee = User::find($id);
+        return view('admin.employee.edit',compact('employee'));
     }
 
     public function delete($id){

@@ -7,7 +7,10 @@ All-Product
 
 
 @section('content')
-<div class="product bg-white rounded p-3">
+<div class="container-fluid">
+    <h2><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i></a>|<a href="{{ url('/All-product') }}">Products</a></h2>
+
+<div class="product bg-white rounded p-3 mt-3">
     <h3>Product Details</h3>
 
     <div class="row">
@@ -65,6 +68,7 @@ All-Product
 
         </div>
     </div>
+</div>
 </div>
 <!-- Add Stock Modal -->
 <div class="modal fade" id="addStockModal" tabindex="-1" role="dialog" aria-labelledby="addStockModalLabel"

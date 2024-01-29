@@ -1,23 +1,15 @@
-@extends('admin.master')
-
-@section('title')
-Add-Product
-@endsection
-
-
-
-@section('content')
-<div class="container-fluid">
-    <h2><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i></a>|<a href="{{ url('/All-product') }}">Products</a></h2>
-
-<div class="row mt-3">
-    <div class="col-lg-12">
-        <section class="card">
-            <header class="card-header">
-                Add Product
-            </header>
-            <div class="card-body">
-                <form method="POST" action="{{ url('dashboard/product-save')}}" enctype="multipart/form-data">
+<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form to collect product details -->
+                <form action="{{ url('wishlist-store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row">
@@ -40,7 +32,7 @@ Add-Product
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="name">Product Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Product Name" value="{{ old('name') }}">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter Product Name" value="{{ $item->wname }}">
                                 @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -71,7 +63,7 @@ Add-Product
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="qty">Product Quantity</label>
-                                <input type="number" class="form-control" id="qty" name="qty" placeholder="Enter Your Quantity">
+                                <input type="number" class="form-control" id="qty" value="{{ $item->quantity }}" name="qty" placeholder="Enter Your Quantity">
                             </div>
                                 @error('qty')
                                   <div class="text-danger">{{ $message }}</div>
@@ -116,7 +108,7 @@ Add-Product
                             <div class="form-group">
                                 <label for="product_description">Product Description</label>
                                       <br>
-                                <textarea name="product_description" id="product_description" cols="168" rows="5">{{ old('product_description') }}</textarea>
+                                <textarea name="product_description" id="product_description"  rows="5">{{ old('product_description') }}</textarea>
                                     @error('product_description')
                                        <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -129,10 +121,7 @@ Add-Product
                         </div>
                     </div>
                 </form>
-
             </div>
-        </section>
+        </div>
     </div>
 </div>
-</div>
-@endsection

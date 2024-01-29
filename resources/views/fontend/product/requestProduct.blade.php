@@ -4,11 +4,19 @@
 @endsection
 @section('fontend')
 <section class="wrapper">
+    <div class="container-fluid">
+        <h3>
+            <a href="{{ url('user_dashboard') }}"><i class="fa fa-dashboard"></i></a>|
+            <a href="{{ url('/user/requests-reject') }}">Reject Product</a>|
+            <a href="{{ url('/user/delever-product') }}">Delever Product</a>|
+            <a href="{{ url('/all-pro') }}">All Product</a>
+        </h3>
+
     <div class="row">
         <div class="col-lg-12">
             <section class="card">
                 <header class="card-header">
-                    Your Requested Products
+                    Request Products list
                 </header>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -46,5 +54,6 @@
             </section>
         </div>
     </div>
+</div>
 </section>
 @endsection

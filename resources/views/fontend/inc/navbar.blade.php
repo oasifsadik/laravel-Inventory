@@ -2,7 +2,9 @@
     <i class="fa fa-bars"></i>
 </div>
 <!--logo start-->
-<a href="{{ url('/user_dashboard') }}" class="logo">Flat<span>lab</span></a>
+<a href="{{ url('/user_dashboard') }}" class="logo">
+    <img src="{{ asset('fontend/img/logo/uttara-bank-logo.png') }}" height="30px" alt="">
+</a>
 <!--logo end-->
 <div class="nav notify-row" id="top_menu">
   <!--  notification start -->
@@ -213,21 +215,20 @@
 <div class="top-nav ">
   <!--search & user info start-->
   <ul class="nav pull-right top-menu">
-      <li>
-          <input type="text" class="form-control search" placeholder="Search">
-      </li>
       <!-- user login dropdown start-->
       <li class="dropdown">
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-              <img alt="" src="{{ asset('fontend') }}/img/avatar1_small.jpg">
+              <img alt="" src="{{ asset('employee/'. Auth::user()->photo) }}" height="30px">
               <span class="username">{{ Auth::user()->name }}</span>
               <b class="caret"></b>
           </a>
           <ul class="dropdown-menu extended logout dropdown-menu-right">
               <div class="log-arrow-up"></div>
-              <li><a href="{{ url('user_profile/'. Auth::id()) }}"><i class=" fa fa-suitcase"></i>Profile</a></li>
-              <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-              <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
+                <li>
+                    <a href="{{ url('user_profile/'. Auth::id()) }}"><i class=" fa fa-suitcase"></i>Profile</a>
+                </li>
+              {{-- <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+              <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li> --}}
               <li>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">
@@ -238,9 +239,6 @@
                         </form>
               </li>
           </ul>
-      </li>
-      <li class="sb-toggle-right">
-          <i class="fa  fa-align-right"></i>
       </li>
       <!-- user login dropdown end -->
   </ul>

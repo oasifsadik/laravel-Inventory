@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('title')
-Add-Employee
+Edit-Employee
 @endsection
 
 

@@ -7,7 +7,9 @@ Update-Product
 
 
 @section('content')
-<div class="row">
+<div class="container-fluid">
+    <h2><a href="{{ url('/All-product') }}"><i class="fa fa-backward"></i></a>|Edit Products</h2>
+<div class="row mt-3">
     <div class="col-lg-12">
         <section class="card">
             <header class="card-header">
@@ -100,5 +102,6 @@ Update-Product
             </div>
         </section>
     </div>
+</div>
 </div>
 @endsection

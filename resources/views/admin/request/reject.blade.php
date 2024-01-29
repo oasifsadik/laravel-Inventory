@@ -7,11 +7,14 @@ Request Product
 
 
 @section('content')
-<div class="row">
+<div class="container-fluid">
+    <h2><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i></a>|<a href="{{ url('/request/product') }}"><i class="fa fa-envelope-o"></i></a>|<a href="{{ url('/compate/order') }}"><i class="fa fa-check-circle"></i></a></h2>
+
+<div class="row mt-3">
     <div class="col-lg-12">
         <section class="card">
             <header class="card-header">
-                All Request Product
+                All Reject Product
             </header>
             <div class="card-body">
                 <div class="table-responsive">
@@ -50,5 +53,6 @@ Request Product
             </div>
         </section>
     </div>
+</div>
 </div>
 @endsection

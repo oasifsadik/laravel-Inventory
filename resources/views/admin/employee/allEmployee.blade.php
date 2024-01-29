@@ -7,7 +7,10 @@ All-Employee
 
 
 @section('content')
-<div class="row">
+<div class="container-fluid">
+    <h2><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i></a>|<a href="{{ url('/dashboard/employee') }}">Employees</a></h2>
+
+<div class="row mt-3">
     <div class="col-lg-12">
         <section class="card">
             <header class="card-header">
@@ -63,8 +66,8 @@ All-Employee
                                 <a href="{{ url('dashboard/employees-reject', $employee->id) }}" class="btn btn-outline-dark btn-sm"><i class="fa fa-thumbs-down"></i></a>
                             </td>
                             <td>
-                                <a href="" class="btn btn-outline-primary btn-sm"><i class="fa fa-pencil-square-o"></i></a>
-                                <a href="{{ url('dashboard/delete', $employee->id) }}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash-o"></i></a>
+                                {{-- <a href="{{ url('dashboard/edit', $employee->id) }}" class="btn btn-outline-primary btn-sm"><i class="fa fa-pencil-square-o"></i></a> --}}
+                                <a href="{{ url('dashboard/delete', $employee->id) }}" class="btn btn-outline- btn-sm"><i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -74,5 +77,6 @@ All-Employee
             </div>
         </section>
     </div>
+</div>
 </div>
 @endsection

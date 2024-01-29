@@ -7,6 +7,9 @@ All-Product
 
 
 @section('content')
+<div class="container-fluid">
+    <h2 class="mb-3"><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i></a>|<a href="{{ url('return-product') }}"><i class=" fa fa-retweet"></i></a>|Report</h2>
+
 <!-- Your form for entering date range -->
 <div class="col-md-8">
     <form action="{{ url('generate-report') }}" method="GET">
@@ -23,7 +26,7 @@ All-Product
 
 <!-- Display the search results -->
 @if($report->isNotEmpty())
-    <table class="table mt-3">
+    <table class="table shadow rounded bg-white mt-3">
         <h1><button onclick="window.print()" class="btn btn-primary">Print</button></h1>
         <thead>
             <tr>
@@ -53,5 +56,6 @@ All-Product
 @else
     <p>No records found for the selected date range.</p>
 @endif
+</div>
 
 @endsection

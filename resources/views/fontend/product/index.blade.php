@@ -5,11 +5,19 @@ Employee-All-Product
 @endsection
 @section('fontend')
 <section class="wrapper">
-    <div class="row">
+    <div class="container_fluid">
+        <h3>
+            <a href="{{ url('user_dashboard') }}"><i class="fa fa-dashboard"></i></a>|
+            <a href="{{ url('/user/requests') }}">Request Product</a>|
+            <a href="{{ url('/user/delever-product') }}">Delever Product</a>|
+            <a href="{{ url('/user/requests-reject') }}">Reject Product</a>
+        </h3>
+
+    <div class="row mt-3">
         <div class="col-lg-12">
             <section class="card">
                 <header class="card-header">
-                    <h1>All Product</h1>
+                    {{-- <h1>All Product</h1> --}}
                     <form action="{{ url('/all-pro') }}" method="GET">
                         <div class="col-md-6 form-group d-flex ">
                             <input class="form-control m-2" type="text" name="search" placeholder="Enter Product Name">
@@ -93,6 +101,7 @@ Employee-All-Product
                 </div>
             </section>
         </div>
+    </div>
     </div>
 </section>
 @endsection

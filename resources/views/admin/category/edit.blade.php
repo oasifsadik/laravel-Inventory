@@ -7,6 +7,9 @@ Add-Category
 
 
 @section('content')
+<div class="container-fluid">
+    <h2><a href="{{ url('allCategory') }}"><i class="fa fa-backward"></i></a>|Edit Category</h2>
+
 <div class="row">
     <div class="col-lg-6 offset-3">
         <section class="card">
@@ -18,11 +21,11 @@ Add-Category
                     @csrf
 
                     <div class="form-group">
-                        <label for="category_name">Employee Name</label>
+                        <label for="category_name">Category Name</label>
                         <input type="text" class="form-control" id="category_name" name="category_name" value="{{ $category->category_name }}" placeholder="Enter Category Name" required>
                     </div>
                     <div class="form-group">
-                        <label for="category_name">Employee Description</label>
+                        <label for="category_name">Category Description</label>
                         <br>
                         <textarea name="category_description" id="category_description" cols="75" rows="5">{{ $category->category_description }}</textarea>
                     </div>
@@ -32,5 +35,6 @@ Add-Category
             </div>
         </section>
     </div>
+</div>
 </div>
 @endsection

@@ -7,7 +7,10 @@ All-Product
 
 
 @section('content')
-<div class="row">
+<div class="container-fluid">
+    <h2><a href="{{ url('/dashboard') }}"><i class="fa fa-home"></i></a>|<a href="{{ url('/dashboard/product') }}">Add Products</a></h2>
+
+<div class="row mt-3">
     <div class="col-lg-12">
         <section class="card">
             <header class="card-header">
@@ -25,7 +28,7 @@ All-Product
                             <th>Description</th>
                             <th>Buying Date</th>
                             <th>Buying Price</th>
-                            <th>Product Quantity</th>
+                            <th>Stock Amount</th>
                             <th>Status</th>
                             <th>Photo</th>
                             <th>Action</th>
@@ -68,5 +71,6 @@ All-Product
             </div>
         </section>
     </div>
+</div>
 </div>
 @endsection

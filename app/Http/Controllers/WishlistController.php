@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,9 @@ class WishlistController extends Controller
         $wishlist = new Wishlist();
         $wishlist->user_id = $user->id;
         $wishlist->wname = $request->wname;
+        $wishlist->quantity = $request->quantity;
         $wishlist->save();
+
         return redirect('/wishlist')->with('success',"wishlist add Successfully!");
     }
     public function delete($id)
@@ -34,4 +37,6 @@ class WishlistController extends Controller
         $wishlist->delete();
         return redirect()->back()->with('success','delete successfully!');
     }
+
+
 }

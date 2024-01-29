@@ -30,9 +30,11 @@
     <link href="{{ asset('fontend') }}/css/style.css" rel="stylesheet">
     <link href="{{ asset('fontend') }}/css/style-responsive.css" rel="stylesheet" />
 
+
   </head>
 
   <body class="light-sidebar-nav">
+    @yield('__js')
 
   <section id="container">
     <!--header start-->
@@ -73,23 +75,23 @@
     <script src="{{ asset('fontend') }}/js/bootstrap.bundle.min.js"></script>
     <script class="include" type="text/javascript" src="{{ asset('fontend') }}/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="{{ asset('fontend') }}/js/jquery.scrollTo.min.js"></script>
-    <script src="{{ asset('fontend') }}/js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="{{ asset('fontend') }}/js/jquery.sparkline.js" type="text/javascript"></script>
-    <script src="{{ asset('fontend') }}/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    {{-- <script src="{{ asset('fontend') }}/js/jquery.nicescroll.js" type="text/javascript"></script> --}}
+    {{-- <script src="{{ asset('fontend') }}/js/jquery.sparkline.js" type="text/javascript"></script> --}}
+    {{-- <script src="{{ asset('fontend') }}/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script> --}}
     <script src="{{ asset('fontend') }}/js/owl.carousel.js" ></script>
     <script src="{{ asset('fontend') }}/js/jquery.customSelect.min.js" ></script>
     <script src="{{ asset('fontend') }}/js/respond.min.js" ></script>
 
     <!--right slidebar-->
-    <script src="{{ asset('fontend') }}/js/slidebars.min.js"></script>
+    {{-- <script src="{{ asset('fontend') }}/js/slidebars.min.js"></script> --}}
 
     <!--common script for all pages-->
     <script src="{{ asset('fontend') }}/js/common-scripts.js"></script>
 
     <!--script for this page-->
-    <script src="{{ asset('fontend') }}/js/sparkline-chart.js"></script>
-    <script src="{{ asset('fontend') }}/js/easy-pie-chart.js"></script>
-    <script src="{{ asset('fontend') }}/js/count.js"></script>
+    {{-- <script src="{{ asset('fontend') }}/js/sparkline-chart.js"></script> --}}
+    {{-- <script src="{{ asset('fontend') }}/js/easy-pie-chart.js"></script> --}}
+    {{-- <script src="{{ asset('fontend') }}/js/count.js"></script> --}}
     <script>
         @if(Session::has('success'))
                 toastr.options =
@@ -131,7 +133,7 @@
                 toastr.warning("{{ session('warning') }}");
         @endif
     </script>
-
+     @yield('script')
   <script>
 
       //owl carousel

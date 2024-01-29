@@ -63,7 +63,7 @@ class RequestController extends Controller
         $requests = ProductRequest::where('user_id', $user->id)
                                     ->where('status','reject')
                                     ->with('product')->get();
-        return view('fontend.product.requestProduct', compact('requests'));
+        return view('fontend.product.reject', compact('requests'));
     }
 
     public function return(Request $request,$id)
